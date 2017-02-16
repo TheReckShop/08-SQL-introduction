@@ -33,6 +33,7 @@ app.get('/new', function(request, response) {
 
 // NOTE: Routes for making API calls to enact CRUD Operations on our database
 //the following code is written in tamplate literal notation
+//THIS IS WHERE THE TABLE 'articles'!!!!!!!!
 app.get('/articles', function(request, response) {
   client.query(`
     CREATE TABLE IF NOT EXISTS articles (

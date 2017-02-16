@@ -48,12 +48,12 @@ Article.prototype.toHtml = function() {
  * - Outputs: identify any outputs and their destination
  */
 Article.loadAll = function(rows) {
-  // TODO: describe what the following code is doing
+  // DONE!: describe what the following code is doing
   rows.sort(function(a,b) {
     return (new Date(b.publishedOn)) - (new Date(a.publishedOn));
   });
-  //This code is taking the parameters for the method .loadAll (which is rows) and ordering that arrary data by newst date to oldest date//
-  // TODO: describe what the following code is doing
+  //This code is taking the parameter for the method .loadAll (which is rows) and ordering that arrary data by newst date to oldest date//
+  // DONE!: describe what the following code is doing
   rows.forEach(function(ele) {
     Article.all.push(new Article(ele));
   })
@@ -71,6 +71,7 @@ Article.loadAll = function(rows) {
  */
 Article.fetchAll = function(callback) {
   // TODO: describe what the following code is doing
+  // The
   $.get('/articles')
   // TODO: describe what the following code is doing
   .then(
@@ -112,11 +113,13 @@ Article.fetchAll = function(callback) {
  */
 Article.truncateTable = function(callback) {
   // TODO: describe what the following code is doing
+  // The following code is creating a method called truncateTable that has a parameter called callback that uses Ajax to send an SQL command of DELETE to the database articles
   $.ajax({
     url: '/articles',
     method: 'DELETE',
   })
   // TODO: describe what the following code is doing
+  // The following code is, after doing the ajax send, creating a method called .then that conole logs 
   .then(function(data) {
     console.log(data);
     if (callback) callback();
