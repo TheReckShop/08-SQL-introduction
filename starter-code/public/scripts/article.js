@@ -40,7 +40,7 @@ Article.prototype.toHtml = function() {
 
 // ++++++++++++++++++++++++++++++++++++++
 
-// TODO
+// DONE!
 /**
  * OVERVIEW of
  * - Describe what the method does
@@ -52,12 +52,13 @@ Article.loadAll = function(rows) {
   rows.sort(function(a,b) {
     return (new Date(b.publishedOn)) - (new Date(a.publishedOn));
   });
-  //
+  //This code is taking the parameters for the method .loadAll (which is rows) and ordering that arrary data by newst date to oldest date//
   // TODO: describe what the following code is doing
   rows.forEach(function(ele) {
     Article.all.push(new Article(ele));
   })
 };
+//This code is running a for loop with the condition that is a function that for every row data in the table it will push the array data in Article.all as an obect with all its properites to the constructor function Article as objects within that constructor that have there own properites. So for each new article we want to add to our database, each new article IS the object and each individual values ie author, publishedOn, etc, are the different properties of that particular object.
 
 // ++++++++++++++++++++++++++++++++++++++
 
