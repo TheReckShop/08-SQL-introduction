@@ -52,7 +52,7 @@ Article.loadAll = function(rows) {
   rows.sort(function(a,b) {
     return (new Date(b.publishedOn)) - (new Date(a.publishedOn));
   });
-
+  //
   // TODO: describe what the following code is doing
   rows.forEach(function(ele) {
     Article.all.push(new Article(ele));
