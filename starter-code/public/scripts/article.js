@@ -124,7 +124,7 @@ Article.truncateTable = function(callback) {
     method: 'DELETE',
   })
   // TODO: describe what the following code is doing
-  // The following code is, after doing the ajax send, calling the method called .then that conole logs
+  // The following code is, after doing the ajax send, runs a method that cosole logs 'data'
   .then(function(data) {
     console.log(data);
     if (callback) callback();
