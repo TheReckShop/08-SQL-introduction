@@ -58,7 +58,7 @@ Article.loadAll = function(rows) {
     Article.all.push(new Article(ele));
   })
 };
-//This code is running a for loop with the condition that is a function that for every row data in the table it will push the array data in Article.all as an obect with all its properites to the constructor function Article as objects within that constructor that have there own properites. So for each new article we want to add to our database, each new article IS the object and each individual values ie author, publishedOn, etc, are the different properties of that particular object.
+//OVERVIEW: This code is running a for loop with the condition that is a function that for every row data in the table it will push the array data in Article.all as an obect with all its properites to the constructor function Article as objects within that constructor that have there own properites. So for each new article we want to add to our database, each new article IS the object and each individual values ie author, publishedOn, etc, are the different properties of that particular object.
 
 // ++++++++++++++++++++++++++++++++++++++
 
@@ -70,18 +70,21 @@ Article.loadAll = function(rows) {
  * - Outputs: identify any outputs and their destination
  */
 Article.fetchAll = function(callback) {
-  // TODO: describe what the following code is doing
-  // The
+  // DONE!: describe what the following code is doing
+  // The following code is running an ajax method that sends a request to the SQL database articles
   $.get('/articles')
-  // TODO: describe what the following code is doing
+  // DONE!: describe what the following code is doing
+  // The following code line runs the corespoding function withing the jquery method .then ONLY AFTER the .get method has run.
   .then(
     function(results) {
       if (results.length) { // If records exist in the DB
-        // TODO: describe what the following code is doing
+        // DONE!: describe what the following code is doing
+        // The following code calling the method loadAll which outputs the resulting data of .get('/articles').
         Article.loadAll(results);
         callback();
       } else { // if NO records exist in the DB
-        // TODO: describe what the following code is doing
+        // DONE!: describe what the following code is doing
+        // This following is an Ajax method .getJSON which looks for json files and retrives the json file from './data/hackerIpsum.json' Then after this is done (established by the .then) and the .then method is running a function that takes the data from the json file and adds it as an object to the Article constructor.
         $.getJSON('./data/hackerIpsum.json')
         .then(function(rawData) {
           rawData.forEach(function(item) {
@@ -90,10 +93,12 @@ Article.fetchAll = function(callback) {
           })
         })
         // TODO: describe what the following code is doing
+        // This code is running after ALL the other code thus far in fetchAll runs and basically it is recalling the if conditional in fetchAll to run all that code
         .then(function() {
           Article.fetchAll(callback);
         })
         // TODO: describe what the following code is doing
+        // If the code doesn't work ts will then console.log err because .error is short hand for .on('error' function)
         .catch(function(err) {
           console.error(err);
         });
@@ -119,7 +124,7 @@ Article.truncateTable = function(callback) {
     method: 'DELETE',
   })
   // TODO: describe what the following code is doing
-  // The following code is, after doing the ajax send, creating a method called .then that conole logs 
+  // The following code is, after doing the ajax send, calling the method called .then that conole logs
   .then(function(data) {
     console.log(data);
     if (callback) callback();
